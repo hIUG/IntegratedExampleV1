@@ -2,8 +2,7 @@ package com.e.c.a.h.integratedexamplev1.home;
 
 import com.e.c.a.h.integratedexamplev1.BasePresenter;
 import com.e.c.a.h.integratedexamplev1.BaseView;
-
-import java.util.List;
+import com.e.c.a.h.integratedexamplev1.data.model.CharacterModel;
 
 /**
  * Created by hugoa on 5/10/2017.
@@ -13,7 +12,8 @@ import java.util.List;
 
 public interface HomeContract {
     interface View extends BaseView<Presenter> {
-        void showResults(List<Character> results);
+        void showResults(CharacterModel results);
+        void showError(int errorID);
     }
 
     interface Presenter extends BasePresenter {

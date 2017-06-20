@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">IntegratedExampleV1</string>
+    <string name="backend_error">Server request error...</string>
 </resources>

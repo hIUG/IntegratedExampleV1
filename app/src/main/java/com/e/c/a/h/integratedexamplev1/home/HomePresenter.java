@@ -1,7 +1,10 @@
 package com.e.c.a.h.integratedexamplev1.home;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.e.c.a.h.integratedexamplev1.data.model.CharacterModel;
+import com.e.c.a.h.integratedexamplev1.data.source.MarvelDataSource;
+import com.e.c.a.h.integratedexamplev1.data.source.MarvelRepository;
+
+import javax.inject.Inject;
 
 /**
  * Created by hugoa on 5/10/2017.
@@ -10,9 +13,17 @@ import java.util.List;
 
 public class HomePresenter implements HomeContract.Presenter {
     private final HomeContract.View view;
+    private final MarvelRepository repository;
 
-    public HomePresenter(HomeContract.View view) {
+    @Inject
+    public HomePresenter(MarvelRepository repository, HomeContract.View view) {
+        this.repository = repository;
         this.view = view;
+    }
+
+    @Inject
+    void setupListeners() {
+        view.setPresenter(this);
     }
 
     @Override
@@ -22,8 +33,16 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void searchCharacter(String character) {
-        List<Character> results = new ArrayList<>();
-        //TODO - Allexis - 20170510 - Search logic
-        view.showResults(results);
+        repository.getCharacter(character, new MarvelDataSource.GetCharacterCallback() {
+            @Override
+            public void onCharacterLoaded(CharacterModel character) {
+                view.showResults(character);
+            }
+
+            @Override
+            public void onNoDataAvailable(int errorID) {
+                view.showError(errorID);
+            }
+        });
     }
 }

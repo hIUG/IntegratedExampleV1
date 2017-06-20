@@ -1,13 +1,10 @@
+
 package com.e.c.a.h.integratedexamplev1.data.source.remote.entity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
-/**
- * Created by hugoa on 5/11/2017.
- */
 
 public class Stories {
 
@@ -55,4 +52,5 @@ public class Stories {
     public void setReturned(Integer returned) {
         this.returned = returned;
     }
+
 }

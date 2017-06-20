@@ -1,3 +1,4 @@
+
 package com.e.c.a.h.integratedexamplev1.data.source.remote.entity;
 
 import com.google.gson.annotations.Expose;
@@ -5,13 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import retrofit2.http.Url;
+public class Result {
 
-/**
- * Created by hugoa on 5/10/2017.
- */
-
-public class Character {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -133,4 +129,5 @@ public class Character {
     public void setUrls(List<Url> urls) {
         this.urls = urls;
     }
+
 }
